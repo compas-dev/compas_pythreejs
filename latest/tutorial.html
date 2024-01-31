@@ -52,6 +52,7 @@
     <script src="_static/togglebutton.js"></script>
     <script src="_static/design-tabs.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tutorial';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://raw.githubusercontent.com/compas-dev/compas_notebook/gh-pages/versions.json';
@@ -540,8 +541,15 @@ document.write(`
   <section id="tutorial">
 <h1>Tutorial</h1>
 <p>The main purpose of <code class="xref py py-mod docutils literal notranslate"><span class="pre">compas_notebook</span></code> is to visualise COMPAS objects in a Jupyter notebook.</p>
-<section id="basics">
-<h2>Basics</h2>
+<section id="basic-usage">
+<h2>Basic Usage</h2>
+<p>Visualization is handled by creating a viewer inside a Jupyter notebook and adding objects to its scene.
+The scene is an instance of <a class="reference external" href="https://compas.dev/compas/latest/api/generated/compas.scene.Scene.html" title="(in COMPAS vlatest)"><code class="xref py py-class docutils literal notranslate"><span class="pre">compas.scene.Scene</span></code></a> that is preconfigured for <code class="docutils literal notranslate"><span class="pre">context=&quot;Notebook&quot;</span></code>,
+and works the same way as any other COMPAS scene.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on visualisation with scenes, see …</p>
+</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">compas</span>
 <span class="kn">from</span> <span class="nn">compas.datastructures</span> <span class="kn">import</span> <span class="n">Mesh</span>
 <span class="kn">from</span> <span class="nn">compas_notebook.viewer</span> <span class="kn">import</span> <span class="n">Viewer</span>
@@ -551,6 +559,80 @@ document.write(`
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">Viewer</span><span class="p">()</span>
 <span class="n">viewer</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">)</span>
 <span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="object-colors">
+<h2>Object Colors</h2>
+<p>To change the color of an object, specify the color when adding the object to the scene.
+You can use a COMPAS color object, or any of the following color specifications: hex, rgb1, rgb255.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">Color</span><span class="o">.</span><span class="n">red</span><span class="p">())</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ff0000&#39;</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="configuration">
+<h2>Configuration</h2>
+<p>The viewer can be configured to have a certain size and to have a specific background colour.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">Viewer</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s1">&#39;#eeeeee&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The grid can be turned on or off.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">Viewer</span><span class="p">(</span><span class="n">show_grid</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="viewports">
+<h2>Viewports</h2>
+<p>The viewer supports two viewports: “top” and “perspective”.
+The default is “perspective”.
+Currently, you can only set the viewport when creating the viewer.
+It cannot be changed afterwards.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">Viewer</span><span class="p">(</span><span class="n">viewport</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that in the top viewport, rotation controls are disabled.</p>
+</section>
+<section id="toolbar">
+<h2>Toolbar</h2>
+<p>By default, the viewer has a toolbar with minimal functionality: zoom extents, zoom in, zoom out.
+The toolbar is on by default, but can be turned off.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">Viewer</span><span class="p">(</span><span class="n">show_toolbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="scene-export">
+<h2>Scene Export</h2>
+<p>Because the scene is an instance of <a class="reference external" href="https://compas.dev/compas/latest/api/generated/compas.scene.Scene.html" title="(in COMPAS vlatest)"><code class="xref py py-class docutils literal notranslate"><span class="pre">compas.scene.Scene</span></code></a>, it can be exported to JSON.
+This can be done manually or using the <code class="docutils literal notranslate"><span class="pre">save</span></code> button in the viewer.</p>
+<p>The scene can be exported by itself</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">viewer</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;scene.json&quot;</span><span class="p">)</span>
+<span class="n">compas</span><span class="o">.</span><span class="n">json_dump</span><span class="p">(</span><span class="n">viewer</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="s2">&quot;scene.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or as part of a larger session object.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">compas</span><span class="o">.</span><span class="n">json_dump</span><span class="p">({</span><span class="s2">&quot;scene&quot;</span><span class="p">:</span> <span class="n">viewer</span><span class="o">.</span><span class="n">scene</span><span class="p">,</span> <span class="s2">&quot;...&quot;</span><span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">},</span> <span class="s2">&quot;session.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An exported scene can be loaded into a diferent notebook or visualised in a different visualisation context such as Rhino or Blender.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># different notebook</span>
+
+<span class="kn">import</span> <span class="nn">compas</span>
+<span class="kn">from</span> <span class="nn">compas_notebook.viewer</span> <span class="kn">import</span> <span class="n">Viewer</span>
+
+<span class="n">scene</span> <span class="o">=</span> <span class="n">compas</span><span class="o">.</span><span class="n">json_load</span><span class="p">(</span><span class="s2">&quot;scene.json&quot;</span><span class="p">)</span>
+<span class="n">viewer</span> <span class="o">=</span> <span class="n">Viewer</span><span class="p">(</span><span class="n">scene</span><span class="o">=</span><span class="n">scene</span><span class="p">)</span>
+<span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rhino</span>
+
+<span class="kn">import</span> <span class="nn">compas</span>
+
+<span class="n">scene</span> <span class="o">=</span> <span class="n">compas</span><span class="o">.</span><span class="n">json_load</span><span class="p">(</span><span class="s2">&quot;scene.json&quot;</span><span class="p">)</span>
+<span class="n">scene</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
 </pre></div>
 </div>
 </section>
@@ -577,7 +659,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basics">Basics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-usage">Basic Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-colors">Object Colors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewports">Viewports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolbar">Toolbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scene-export">Scene Export</a></li>
 </ul>
   </nav></div>
 

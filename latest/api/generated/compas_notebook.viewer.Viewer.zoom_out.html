@@ -555,6 +555,15 @@ document.write(`
 <dt class="sig sig-object py" id="compas_notebook.viewer.Viewer.zoom_out">
 <span class="sig-prename descclassname"><span class="pre">Viewer.</span></span><span class="sig-name descname"><span class="pre">zoom_out</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Zoom out.</p>
+<p>Zooming out is done by doubling the distance between the target and the camera position.
+The camera position is a property of the camera itself.
+The target is controlled by <code class="docutils literal notranslate"><span class="pre">three.OrbitControls</span></code>.</p>
+<p>So we basically compute the vector from the target location to the camera position,
+and then move the camera to <code class="docutils literal notranslate"><span class="pre">target</span> <span class="pre">+</span> <span class="pre">direction</span> <span class="pre">*</span> <span class="pre">2.0</span></code>.</p>
+<p>Note that you should not use the <code class="docutils literal notranslate"><span class="pre">zoom</span></code> attribute of the camera.
+Changing the camera zoom is more like changing the magnification.</p>
+<dl class="field-list simple">
+</dl>
 </dd></dl>
 
 </section>

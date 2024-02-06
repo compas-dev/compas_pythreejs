@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BrepObject.y_to_z" href="compas_notebook.scene.BrepObject.y_to_z.html" />
-    <link rel="prev" title="BrepObject.clear" href="compas_notebook.scene.BrepObject.clear.html" />
+    <link rel="prev" title="BrepObject.contrastcolor" href="compas_notebook.scene.BrepObject.contrastcolor.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -553,7 +553,7 @@ document.write(`
 <h1>BrepObject.geometry_to_objects</h1>
 <dl class="py method">
 <dt class="sig sig-object py" id="compas_notebook.scene.BrepObject.geometry_to_objects">
-<span class="sig-prename descclassname"><span class="pre">BrepObject.</span></span><span class="sig-name descname"><span class="pre">geometry_to_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contrastcolor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">BrepObject.</span></span><span class="sig-name descname"><span class="pre">geometry_to_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometry</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contrastcolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Convert a PyThreeJS geometry to a list of PyThreeJS objects.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -562,7 +562,7 @@ document.write(`
 </dd>
 <dt><strong>color</strong><span class="classifier">rgb1 | rgb255 | <a class="reference external" href="https://compas.dev/compas/latest/api/generated/compas.colors.Color.html" title="(in COMPAS vlatest)"><code class="xref py py-class docutils literal notranslate"><span class="pre">compas.colors.Color</span></code></a></span></dt><dd><p>The RGB color of the geometry.</p>
 </dd>
-<dt><strong>contrastcolor</strong><span class="classifier">rgb1 | rgb255 | <a class="reference external" href="https://compas.dev/compas/latest/api/generated/compas.colors.Color.html" title="(in COMPAS vlatest)"><code class="xref py py-class docutils literal notranslate"><span class="pre">compas.colors.Color</span></code></a></span></dt><dd><p>The RGB color of the edges.</p>
+<dt><strong>contrastcolor</strong><span class="classifier">rgb1 | rgb255 | <a class="reference external" href="https://compas.dev/compas/latest/api/generated/compas.colors.Color.html" title="(in COMPAS vlatest)"><code class="xref py py-class docutils literal notranslate"><span class="pre">compas.colors.Color</span></code></a>, optional</span></dt><dd><p>The RGB color of the edges.</p>
 </dd>
 <dt><strong>transformation</strong><span class="classifier"><a class="reference external" href="https://compas.dev/compas/latest/api/generated/compas.geometry.Transformation.html" title="(in COMPAS vlatest)"><code class="xref py py-class docutils literal notranslate"><span class="pre">compas.geometry.Transformation</span></code></a>, optional</span></dt><dd><p>The transformation to apply to the geometry.</p>
 </dd>
@@ -570,7 +570,7 @@ document.write(`
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><dl class="simple">
-<dt>list[three.Mesh, three.LineSegments]</dt><dd><p>List of PyThreeJS objects created.</p>
+<dt>tuple[three.Mesh, three.LineSegments]</dt><dd><p>List of PyThreeJS objects created.</p>
 </dd>
 </dl>
 </dd>

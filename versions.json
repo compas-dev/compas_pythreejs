@@ -5,7 +5,12 @@
     "url": "https://compas.dev/compas_notebook/latest/"
   },
   {
-    "name": "0.8.2 (stable)",
+    "name": "0.10.0 (stable)",
+    "version": "0.10.0",
+    "url": "https://compas.dev/compas_notebook/0.10.0/"
+  },
+  {
+    "name": "0.8.2",
     "version": "0.8.2",
     "url": "https://compas.dev/compas_notebook/0.8.2/"
   },
